@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>X的因子链 - Hexo</title>
+  <title>糖果 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-04 00:06" pubdate>
-        2020年10月4日 凌晨
+      <time datetime="2020-10-06 21:40" pubdate>
+        2020年10月6日 晚上
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      628 字
+      789 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      11
        分钟
     </span>
   
@@ -217,97 +217,114 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">X的因子链</h1>
+            <h1 style="display: none">糖果</h1>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="X的因子链"><a href="#X的因子链" class="headerlink" title="X的因子链"></a>X的因子链</h1><p>输入正整数 $X$，求 $X$ 的大于 1 的因子组成的满足任意前一项都能整除后一项的严格递增序列的最大长度，以及满足最大长度的序列的个数。</p>
+              <p>糖果店的老板一共有 $M$ 种口味的糖果出售。</p>
+<p>为了方便描述，我们将 $M$ 种口味编号 $1∼M$。</p>
+<p>小明希望能品尝到所有口味的糖果。</p>
+<p>遗憾的是老板并不单独出售糖果，而是 KK 颗一包整包出售。</p>
+<p>幸好糖果包装上注明了其中 $K$ 颗糖果的口味，所以小明可以在买之前就知道每包内的糖果口味。</p>
+<p>给定 $N$ 包糖果，请你计算小明最少买几包，就可以品尝到所有口味的糖果。</p>
 <p><strong>输入格式</strong></p>
-<p>输入包含多组数据，每组数据占一行，包含一个正整数表示 X。</p>
+<p>第一行包含三个整数 $N,M,K$。</p>
+<p>接下来 $N$ 行每行 $K$ 这整数 $T_1,T_2,···,_TK$，代表一包糖果的口味。</p>
 <p><strong>输出格式</strong></p>
-<p>对于每组数据，输出序列的最大长度以及满足最大长度的序列的个数。</p>
-<p>每个结果占一行。</p>
+<p>一个整数表示答案。</p>
+<p>如果小明无法品尝所有口味，输出 $−1$。</p>
 <p><strong>数据范围</strong></p>
-<p>$1≤X≤2^{20}$</p>
+<p>$1≤N≤100$,<br>$1≤M,K≤20$,<br>$1≤T_i≤M$</p>
 <p><strong>输入样例：</strong></p>
-<pre><code class="hljs angelscript"><span class="hljs-number">2</span>
-<span class="hljs-number">3</span>
-<span class="hljs-number">4</span>
-<span class="hljs-number">10</span>
-<span class="hljs-number">100</span></code></pre>
+<pre><code class="hljs basic"><span class="hljs-symbol">6 </span><span class="hljs-number">5</span> <span class="hljs-number">3</span>
+<span class="hljs-symbol">1 </span><span class="hljs-number">1</span> <span class="hljs-number">2</span>
+<span class="hljs-symbol">1 </span><span class="hljs-number">2</span> <span class="hljs-number">3</span>
+<span class="hljs-symbol">1 </span><span class="hljs-number">1</span> <span class="hljs-number">3</span>
+<span class="hljs-symbol">2 </span><span class="hljs-number">3</span> <span class="hljs-number">5</span>
+<span class="hljs-symbol">5 </span><span class="hljs-number">4</span> <span class="hljs-number">2</span>
+<span class="hljs-symbol">5 </span><span class="hljs-number">1</span> <span class="hljs-number">2</span></code></pre>
 
 <p><strong>输出样例：</strong></p>
-<pre><code class="hljs basic"><span class="hljs-symbol">1 </span><span class="hljs-number">1</span>
-<span class="hljs-symbol">1 </span><span class="hljs-number">1</span>
-<span class="hljs-symbol">2 </span><span class="hljs-number">1</span>
-<span class="hljs-symbol">2 </span><span class="hljs-number">2</span>
-<span class="hljs-symbol">4 </span><span class="hljs-number">6</span></code></pre>
+<pre><code class="hljs angelscript"><span class="hljs-number">2</span></code></pre>
 
 
 
-
-
-<p>每个数就相当于在前一个的基础上再乘一个因子。<br>我们选择用质因子来乘，因为如果是非质因子，那么它还可以分解，序列就会变长<br>基于以上的分析，我们考虑算数基本定理</p>
-<p>$N=P_1^{c_1}*P_2^{c_2}*P_3^{c_3}…*P_k^{c_k}$</p>
-<p>其中P都是质因子</p>
-<p>根据分析，可以构造以下的序列：</p>
-<p>假设有2个$P_1$，2个$P_2$，1个$P_3$，那么因子可以有以下排列：</p>
-<p>​        $P_1 \quad \quad P_2 \quad \quad \quad P_1 \quad \quad \quad \quad P_2 \quad \quad \quad \quad \quad P_3$        构成的序列为</p>
-<p>​        $P_1 \quad P_1*P_2 \quad P_1^{2} * P_2 \quad \quad P_1^{2}*P_2^{2} \quad \quad P_1^{2}*P_2^{2}*P_3$</p>
-<p>第一问也就是5个数，第二问序列的个数就是求这5个数有多少种不同的排列，即多重集的排列数问题</p>
+<p><strong>这是一道重复覆盖问题</strong></p>
+<p>1.迭代加深</p>
+<p>2.找出选择最少的列</p>
+<p>3.h()函数，至少要选多少行(估价函数)，可行性剪枝</p>
+<p>代码中的<code>(1 &lt;&lt; m) - 1 - state</code> ，这可以用到位运算优化，方便使用lowbit函数：</p>
+<p>如果<code>state</code>值是5，二进制表示<code>101</code>，<code>(1 &lt;&lt; m) - 1</code>是 <code>111</code>，那么相减之后就是 <code>010</code>，此时相减后的结果中的<code>1</code>就表示还没选的那一列，而求出二进制中的每一位<code>1</code>，我们可以用到<code>lowbit</code>函数，为了方便直接找到是第几位，还可以预处理<code>log2</code>的各个值</p>
 <pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cmath&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span>
 
 <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
 
-<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> LL;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">110</span>, M = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">20</span>;
 
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">100010</span>;
+<span class="hljs-keyword">int</span> n, m, k;
+<span class="hljs-keyword">int</span> Log2[M];
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; col[N]; <span class="hljs-comment">// 存储的是这一行有哪些列可以选到</span>
 
-<span class="hljs-keyword">int</span> n;
-LL p[N], c[N], cnt;
-LL f[N];
-
-<span class="hljs-comment">// 预处理阶乘</span>
-<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>&#123;
-    f[<span class="hljs-number">0</span>] = f[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= <span class="hljs-number">31</span>; i ++) f[i] = f[i - <span class="hljs-number">1</span>] * i;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
+    <span class="hljs-keyword">return</span> x &amp; -x;
 &#125;
 
-<span class="hljs-comment">// 算数基本定理</span>
-<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">divide</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;
-    cnt = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= <span class="hljs-built_in">sqrt</span>(n); i ++) &#123;
-        <span class="hljs-keyword">if</span> (n % i == <span class="hljs-number">0</span>) &#123;
-            p[++ cnt] = i, c[cnt] = <span class="hljs-number">0</span>;
-            <span class="hljs-keyword">while</span> (n % i == <span class="hljs-number">0</span>) n /= i, c[cnt] ++;
-        &#125;
+<span class="hljs-comment">// 最少还需要选几行，估价函数，用来剪枝</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">h</span><span class="hljs-params">(<span class="hljs-keyword">int</span> state)</span> </span>&#123;
+    <span class="hljs-keyword">int</span> res= <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = (<span class="hljs-number">1</span> &lt;&lt; m) - <span class="hljs-number">1</span> - state; i; i -= lowbit(i)) &#123;
+        <span class="hljs-keyword">int</span> c = Log2[lowbit(i)];
+        <span class="hljs-comment">// 把所有能选到这一列的行全部算进去</span>
+        res ++;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> row : col[c]) i &amp;= ~row;
+    &#125;
+    <span class="hljs-keyword">return</span> res;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> depth, <span class="hljs-keyword">int</span> state)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (!depth || h(state) &gt; depth) <span class="hljs-keyword">return</span> state == ((<span class="hljs-number">1</span> &lt;&lt; m) - <span class="hljs-number">1</span>);
+    
+    <span class="hljs-comment">// 找到选择性最少的一列</span>
+    <span class="hljs-keyword">int</span> t = <span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = (<span class="hljs-number">1</span> &lt;&lt; m) - <span class="hljs-number">1</span> - state; i; i -= lowbit(i)) &#123;
+        <span class="hljs-comment">// c:当前还没选的那一列</span>
+        <span class="hljs-keyword">int</span> c = Log2[lowbit(i)];
+        <span class="hljs-keyword">if</span> (t == <span class="hljs-number">-1</span> || col[t].size() &gt; col[c].size())
+            t = c;
     &#125;
     
-    <span class="hljs-keyword">if</span> (n &gt; <span class="hljs-number">1</span>) p[++ cnt] = n, c[cnt] = <span class="hljs-number">1</span>;
+    <span class="hljs-comment">// 枚举选哪一行</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> row : col[t])
+        <span class="hljs-keyword">if</span> (dfs(depth - <span class="hljs-number">1</span>, state | row)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
 &#125;
 
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
-    init();
+    <span class="hljs-built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; k;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i ++) Log2[<span class="hljs-number">1</span> &lt;&lt; i] = i;
     
-    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">cin</span> &gt;&gt; n) &#123;
-        divide(n);    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) &#123;
+        <span class="hljs-keyword">int</span> state = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; k; j ++) &#123;
+            <span class="hljs-keyword">int</span> c;
+            <span class="hljs-built_in">cin</span> &gt;&gt; c;
+            state |= (<span class="hljs-number">1</span> &lt;&lt; (c - <span class="hljs-number">1</span>)); <span class="hljs-comment">// 把每包糖果用state这个数来表示，方便之后的二进制计算</span>
+        &#125;
         
-        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>; <span class="hljs-comment">// 统计每个质因子的个数</span>
-        LL temp = <span class="hljs-number">1</span>;
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= cnt; i ++) count += c[i], temp *= f[c[i]];
-        
-        LL ans1 = count, ans2 = f[count];
-        
-        <span class="hljs-comment">/*</span>
-<span class="hljs-comment">         ans2 / temp: 多重集的排列数问题</span>
-<span class="hljs-comment">         一共有count个数，会有f[count]种排序，但里面会有重复的排列</span>
-<span class="hljs-comment">         需要把结果除以每个c[i]的阶乘来去重，这一步temp预处理了</span>
-<span class="hljs-comment">         */</span>
-        <span class="hljs-built_in">cout</span> &lt;&lt; ans1 &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; ans2 / temp &lt;&lt; <span class="hljs-built_in">endl</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; m; j ++)
+            <span class="hljs-keyword">if</span> (state &gt;&gt; j &amp; <span class="hljs-number">1</span>) col[j].push_back(state);
     &#125;
+    
+    <span class="hljs-keyword">int</span> depth = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (depth &lt;= m &amp;&amp; !dfs(depth, <span class="hljs-number">0</span>)) depth ++;
+    
+    <span class="hljs-keyword">if</span> (depth &gt; m) depth = <span class="hljs-number">-1</span>;
+    
+    <span class="hljs-built_in">cout</span> &lt;&lt; depth &lt;&lt; <span class="hljs-built_in">endl</span>;
     
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
@@ -321,7 +338,7 @@ LL f[N];
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E8%AE%BA/">数论</a>
+                      <a class="hover-with-bg" href="/categories/%E6%90%9C%E7%B4%A2/">搜索</a>
                     
                   </div>
                 
@@ -329,7 +346,9 @@ LL f[N];
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%95%B0%E5%9F%BA%E6%9C%AC%E5%AE%9A%E7%90%86/">算数基本定理</a>
+                      <a class="hover-with-bg" href="/tags/dfs/">dfs</a>
+                    
+                      <a class="hover-with-bg" href="/tags/IDA/">IDA*</a>
                     
                   </div>
                 
@@ -342,18 +361,12 @@ LL f[N];
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/06/%E7%B3%96%E6%9E%9C/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">糖果</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/03/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/">
-                        <span class="hidden-mobile">树的直径</span>
+                      <a href="/2020/10/04/X%E7%9A%84%E5%9B%A0%E5%AD%90%E9%93%BE/">
+                        <span class="hidden-mobile">X的因子链</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -529,7 +542,7 @@ LL f[N];
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "X的因子链&nbsp;",
+        "糖果&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
